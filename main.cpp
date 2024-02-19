@@ -38,6 +38,10 @@ int main() {
         wcout << L"Неверное число";
         return 0;
     }
+    if ( step >= 43 ) {
+        wcout << L"Вышли за предел int32";
+
+    }
 
     switch (step) {
         case 0:
