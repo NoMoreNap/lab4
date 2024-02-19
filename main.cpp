@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 
 using  namespace  std;
 
@@ -11,21 +12,39 @@ int Fibonacci(int n) {
     } else {
         int num1 = Fibonacci(n - 1);
         int num2 = Fibonacci(n  - 2);
-        int a = num1  + num2;
-        if (a > 2e9 + 148e6 + 1) {
-            cout << a;
+        try {
+            int a = num1  + num2;
+            if (a > 2e9 + 148e6 + 1) {
+                throw L"Вышли за предел int32";
+            }
+            return a;
+        } catch( const char* error_message ) {
+            cout << error_message << endl;
+            exit( 0);
         }
-        return a;
     }
 
 }
 
 int main() {
     setlocale(LC_ALL, "Russian");
-    int step = 4;
+    int step;
+    wcout << L"Введите число\n" << endl;
+    cin >> step;
 
-    int b = Fibonacci(step);
+    const bool is_in_range = step > 0;
 
-    cout << b;
+    if (!is_in_range) {
+        wcout << L"Неверное число";
+        return 0;
+    }
 
+    switch (step) {
+        case 0:
+            wcout << L"Неверное число";
+            break;
+        default:
+            int b = Fibonacci(step);
+            cout << b;
+    }
 }
