@@ -29,7 +29,7 @@ int Fibonacci(int n) {
 int main() {
     setlocale(LC_ALL, "Russian");
     int step;
-    wcout << L"Введите число\n" << endl;
+    wcout << L"Введите число\n";
     cin >> step;
 
     const bool is_in_range = step > 0;
@@ -40,6 +40,7 @@ int main() {
     }
     if ( step >= 43 ) {
         wcout << L"Вышли за предел int32";
+        return 0;
 
     }
 
